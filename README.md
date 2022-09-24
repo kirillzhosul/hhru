@@ -7,7 +7,7 @@ HH.ru API library for Python.
 ```python
 import hhru
 # List first page of Python remote vacancies, sorted by new. (See API docs)
-api = hhru.Api().api.method(
+api = hhru.Api().method(
   "vacancies",
   text="Python",
   search_field="name",
