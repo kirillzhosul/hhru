@@ -32,5 +32,6 @@ from hhru.client import Client
 from hhru.api import Api
 from hhru.auth import Auth
 from hhru.response import Response
+from hhru import consts
 
-__all__ = ["Api", "Auth", "Response", "Client"]
+__all__ = ["Api", "Auth", "Response", "Client", "consts"]
