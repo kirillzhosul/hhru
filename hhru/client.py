@@ -36,3 +36,8 @@ class Client:
         # Components.
         self.auth = Auth()
         self.api = Api(auth=self.auth)
+
+    def search_vacancies(
+        self, **kwargs
+    ):
+        return self.api.method(name="vacancies", **kwargs)

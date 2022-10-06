@@ -12,8 +12,7 @@ def get_vacancies(language: str, max_page: int = 21):
     page = 0
     total = 0
     while True:
-        response = client.api.method(
-            "vacancies",
+        response = client.search_vacancies(
             text=language.lower(),
             per_page=MAX_PER_PAGE,
             page=page,
