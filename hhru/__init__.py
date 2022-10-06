@@ -26,10 +26,11 @@ from hhru.__version__ import (
 )
 
 # Base API.
-from hhru.api import Api
+from hhru.client import Client
 
 # Additional API.
+from hhru.api import Api
 from hhru.auth import Auth
 from hhru.response import Response
 
-__all__ = ["Api", "Auth", "Response"]
+__all__ = ["Api", "Auth", "Response", "Client"]

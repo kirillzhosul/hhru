@@ -1,7 +1,7 @@
 import functools
 import hhru
 
-api = hhru.Api()
+client = hhru.Client()
 
 
 MAX_PER_PAGE = 100
@@ -12,7 +12,7 @@ def get_vacancies(language: str, max_page: int = 21):
     page = 0
     total = 0
     while True:
-        response = api.method(
+        response = client.api.method(
             "vacancies",
             text=language.lower(),
             per_page=MAX_PER_PAGE,
