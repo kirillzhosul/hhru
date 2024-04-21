@@ -4,22 +4,23 @@
 """
 
 import os
-from setuptools import setup, find_packages
+from typing import Any, Dict
 
+from setuptools import find_packages, setup
 
 # Read and pass all data from version file (module.)
-version_file = {}
+version_file: Dict[str, Any] = {}
 with open(
     os.path.join(
         os.path.abspath(os.path.dirname(__file__)), "hhru", "__version__.py"
     ),
     "r",
-    "utf-8",
+    encoding="utf-8",
 ) as f:
     exec(f.read(), version_file)
 
 # Read whole readme file.
-with open("README.md", "r", "utf-8") as f:
+with open("README.md", "r", encoding="utf-8") as f:
     readme = f.read()
 
 classifiers = [

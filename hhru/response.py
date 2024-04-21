@@ -3,8 +3,9 @@
     Result of all API methods.
 """
 
-from typing import Dict, Any, Optional
-from requests import Response
+from typing import Any, Dict
+
+from requests import Response as HTTPResponse
 
 
 class Response:
@@ -13,10 +14,10 @@ class Response:
     """
 
     # Raw response fields.
-    _raw_json: Optional[Dict] = None
-    _raw_response: Optional[Response] = None
+    _raw_json: Dict[Any, Any]
+    _raw_response: HTTPResponse
 
-    def __init__(self, http_response: Response):
+    def __init__(self, http_response: HTTPResponse):
         """
         :param http_response: Response object (HTTP).
         """
@@ -56,14 +57,14 @@ class Response:
         attribute_value = self._raw_json.get(attribute_name, None)
         return attribute_value
 
-    def raw_json(self) -> Dict:
+    def raw_json(self) -> Dict[Any, Any]:
         """
         Returns raw JSON from the response.
         WARNING: Do not use this method.
         """
         return self._raw_json
 
-    def raw_response(self) -> Response:
+    def raw_response(self) -> HTTPResponse:
         """
         Returns raw response object.
         WARNING: Do not use this method.

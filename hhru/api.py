@@ -3,7 +3,8 @@
     Sends HTTP requests, handles API methods.
 """
 
-from typing import Optional
+from typing import Any, Optional
+
 import requests
 
 from hhru.auth import Auth
@@ -19,13 +20,13 @@ class Api:
     _api_server_provider_url = "https://api.hh.ru"
 
     # `Auth` instance that provides authentication fields.
-    _auth_provider: Auth = None
+    _auth_provider: Optional[Auth] = None
 
-    def __init__(self, auth: Optional[Auth] = None):
+    def __init__(self, auth: Optional[Auth] = None) -> None:
         """
         :param auth: Auth provider as the `Auth` instance.
         """
-        if auth and not isinstance(auth, Auth):
+        if auth and not isinstance(auth, Auth): # type: ignore
             raise TypeError(
                 "Auth must be an instance of `Auth`! You may not pass auth as it will be initialise blank internally in `Api`."
             )
@@ -34,7 +35,7 @@ class Api:
     def method(
         self,
         name: str,
-        **kwargs,
+        **kwargs: Any,
     ) -> Response:
         """
         Executes API method with given name.

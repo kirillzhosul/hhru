@@ -1,15 +1,16 @@
 import functools
-import hhru
+from typing import Any
 
+import hhru
 
 client = hhru.Client()
 
 
-def filter_vacancy(vacancy):
+def filter_vacancy(vacancy: Any) -> Any:
     return vacancy
 
 
-def print_vacancy(vacancy):
+def print_vacancy(vacancy: Any) -> None:
     print(">>>", vacancy["name"])
 
 

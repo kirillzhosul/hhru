@@ -4,14 +4,18 @@
     Provides interface for working with HeadHunter.
     HH website: https://hh.ru/
     HH API endpoint: https://apihh.ru/
+
     HH developer documentation: 
     - https://github.com/hhru/api
     - https://api.hh.ru/openapi/redoc
+    
     Author && Maintainer:
     - Kirill Zhosul (@kirillzhosul)
     - kirillzhosul@yandex.com
     - https://github.com/kirillzhosul
 """
+
+from hhru import consts
 
 # Library specific information.
 from hhru.__version__ import (
@@ -25,13 +29,12 @@ from hhru.__version__ import (
     __version__,
 )
 
-# Base API.
-from hhru.client import Client
-
 # Additional API.
 from hhru.api import Api
 from hhru.auth import Auth
+
+# Base API.
+from hhru.client import Client
 from hhru.response import Response
-from hhru import consts
 
 __all__ = ["Api", "Auth", "Response", "Client", "consts"]

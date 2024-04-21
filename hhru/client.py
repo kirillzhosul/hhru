@@ -2,8 +2,7 @@
     Main client for hh.ru SDK.
     Provides root interface for working with HeadHunter.
 """
-from typing import Callable, Union, Dict, List, Optional
-
+from typing import Any, Generator, List
 
 # Components.
 from hhru.api import Api
@@ -26,24 +25,24 @@ class Client:
 
     # Authentication instance.
     # Used for authentication.
-    auth = None
+    auth: Auth
 
     # API instance.
     # Used for sending API HTTP requests.
-    api = None
+    api: Api
 
-    def __init__(self):
+    def __init__(self) -> None:
 
         # Components.
         self.auth = Auth()
         self.api = Api(auth=self.auth)
 
-    def search_vacancies(self, **kwargs) -> List:
+    def search_vacancies(self, **kwargs: Any) -> List[Any]:
         """Returns list of search results for vacancies"""
         response = self.api.method(name="vacancies", **kwargs)
         return response.items
 
-    def search_vacancies_over_pages(self, *, page_limit: int = 21, **kwargs) -> List:
+    def search_vacancies_over_pages(self, *, page_limit: int = 21, **kwargs: Any) -> Generator[Any, Any, None]:
         """Returns list of search results for vacancies that was collected from all result pages (hh.ru has limit to 20 max pages search depth)."""
         search_current_page = 0
         while True:
