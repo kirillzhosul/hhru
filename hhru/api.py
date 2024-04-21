@@ -19,9 +19,6 @@ class Api:
     # URL of the API.
     _api_server_provider_url = "https://api.hh.ru"
 
-    # `Auth` instance that provides authentication fields.
-    _auth_provider: Optional[Auth] = None
-
     def __init__(self, auth: Optional[Auth] = None) -> None:
         """
         :param auth: Auth provider as the `Auth` instance.
@@ -30,7 +27,7 @@ class Api:
             raise TypeError(
                 "Auth must be an instance of `Auth`! You may not pass auth as it will be initialise blank internally in `Api`."
             )
-        self._auth_provider = auth if auth else Auth()
+        self._auth = auth if auth else Auth()
 
     def method(
         self,
@@ -48,7 +45,7 @@ class Api:
         http_params = kwargs.copy()
 
         # Send HTTP request.
-        http_response = requests.get(url=api_server_method_url, params=http_params)
+        http_response = requests.get(url=api_server_method_url, params=http_params, headers={"User-Agent": self._auth.user_agent})
 
         # Wrap HTTP response in to own Response object.
         response = Response(http_response=http_response)
