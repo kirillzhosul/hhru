@@ -1,6 +1,6 @@
 """
-    HH.ru API library for Python.
-    Setup tools script.
+HH.ru API library for Python.
+Setup tools script.
 """
 
 import os
@@ -11,9 +11,7 @@ from setuptools import find_packages, setup
 # Read and pass all data from version file (module.)
 version_file: Dict[str, Any] = {}
 with open(
-    os.path.join(
-        os.path.abspath(os.path.dirname(__file__)), "hhru", "__version__.py"
-    ),
+    os.path.join(os.path.abspath(os.path.dirname(__file__)), "hhru", "__version__.py"),
     "r",
     encoding="utf-8",
 ) as f:
@@ -57,6 +55,7 @@ setup(
     url=version_file["__url__"],
     packages=find_packages(),
     package_data={"": ["LICENSE"], "hhru": ["py.typed"]},
+    keywords=["hhru", "hh.ru", "hh api", "headhunter"],
     package_dir={"hhru": "hhru"},
     include_package_data=True,
     license=version_file["__license__"],

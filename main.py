@@ -3,6 +3,9 @@ from typing import Any
 
 import hhru
 
+# from hhru.auth.providers.anonymous import AnonymousAuthProvider
+# from hhru.backend.api.provider import BackendApiProvider
+# client = hhru.Client(backend=BackendApiProvider(AnonymousAuthProvider()))
 client = hhru.Client()
 
 
@@ -29,7 +32,6 @@ def main():
             ),
         )
     )
-
     # Print 50 first vacancies.
     [print_vacancy(vac) for vac in vacancies[0:50]]
 
