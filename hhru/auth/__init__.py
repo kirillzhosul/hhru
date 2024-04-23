@@ -2,7 +2,12 @@
 Authentication providers
 """
 
-from .providers import AbstractAuthProvider, AnonymousAuthProvider
+from .providers import AbstractAuthProvider, AnonymousAuthProvider, DirectAuthProvider
 from .type import AuthAccessType
 
-__all__ = ["AuthAccessType", "AbstractAuthProvider", "AnonymousAuthProvider"]
+__all__ = [
+    "AuthAccessType",
+    "AbstractAuthProvider",
+    "AnonymousAuthProvider",
+    "DirectAuthProvider",
+]

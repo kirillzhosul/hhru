@@ -3,9 +3,6 @@ from typing import Any
 
 import hhru
 
-# from hhru.auth.providers.anonymous import AnonymousAuthProvider
-# from hhru.backend.api.provider import BackendApiProvider
-# client = hhru.Client(backend=BackendApiProvider(AnonymousAuthProvider()))
 client = hhru.Client()
 
 
