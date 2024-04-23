@@ -16,16 +16,26 @@ Author && Maintainer:
 """
 
 from hhru import consts
-from hhru.auth import AbstractAuthProvider, AnonymousAuthProvider, AuthAccessType
-from hhru.backend import AbstractBackendProvider, BackendApiProvider
+from hhru.auth import (
+    AbstractAuthProvider,
+    AnonymousAuthProvider,
+    AuthAccessType,
+    DirectAuthProvider,
+)
+from hhru.backend import AbstractBackendProvider, BackendApiProvider, BackendWebProvider
 from hhru.client import Client
+
+from . import __main__
 
 __all__ = [
     "AbstractBackendProvider",
     "BackendApiProvider",
     "AuthAccessType",
+    "DirectAuthProvider",
     "AbstractAuthProvider",
     "AnonymousAuthProvider",
+    "BackendWebProvider",
     "Client",
     "consts",
+    "__main__",
 ]

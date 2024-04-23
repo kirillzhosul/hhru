@@ -1,12 +1,13 @@
 [tool.poetry]
 name = "hhru"
-version = "0.1.0"
-description = "HH.ru API library for Python."
+version = "0.1.1"
+description = "HH.ru wrapper library (jobs searching)"
 license = "MIT"
 readme = "README.md"
 authors = ["Kirill Zhosul <kirillzhosul@yandex.com>"]
 packages = [{ include = "hhru" }]
-keywords = ["hhru", "hh.ru", "hh api", "headhunter"]
+keywords = ["hhru", "hh.ru", "hh api", "headhunter", "jobs", "wrapper", "api"]
+urls = { "Documentation" = "https://github.com/kirillzhosul/hhru", "Source" = "https://github.com/kirillzhosul/hhru" }
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Environment :: Web Environment",
