@@ -1,9 +1,31 @@
 [tool.poetry]
 name = "hhru"
-version = "0.0.1"
+version = "0.1.0"
 description = "HH.ru API library for Python."
-authors = ["Kirill Zhosul"]
 license = "MIT"
+readme = "README.md"
+authors = ["Kirill Zhosul <kirillzhosul@yandex.com>"]
+packages = [{ include = "hhru" }]
+keywords = ["hhru", "hh.ru", "hh api", "headhunter"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
 
 [tool.poetry.dependencies]
 python = "^3.7"
