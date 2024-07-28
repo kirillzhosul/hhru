@@ -1,5 +1,7 @@
 from typing import Any, Generator, List, Protocol
 
+from hhru.dto import VacancyDTO
+
 
 class BackendProtocol(Protocol):
     """
@@ -14,7 +16,7 @@ class BackendProtocol(Protocol):
 
     def search_vacancies_over_pages(
         self, *, page_limit: int = 21, **kwargs: Any
-    ) -> Generator[Any, Any, None]:
+    ) -> Generator[VacancyDTO, Any, None]:
         """
         Returns list of search results for vacancies that was collected from all result pages (hh.ru has limit to 20 max pages search depth)
         """

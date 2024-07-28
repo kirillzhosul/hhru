@@ -5,6 +5,7 @@ import requests
 from hhru.auth.type import AuthAccessType
 from hhru.backend.abstract import AbstractBackendProvider
 from hhru.consts import VACANCY_SEARCH_MAX_PER_PAGE
+from hhru.dto.vacancy import VacancyDTO
 
 from .consts import API_TARGET_HOST, API_USER_AGENT
 from .http_response import BackendApiResponse
@@ -31,14 +32,15 @@ class BackendApiProvider(AbstractBackendProvider):
 
         return response
 
-    def search_vacancies(self, **kwargs: Any) -> List[int]:
+    def search_vacancies(self, **kwargs: Any) -> List[VacancyDTO]:
         if self.auth_provider.access_type.value <= AuthAccessType.abstract.value:
             raise Exception("Access type should be non-abstract!")
-        return self._method("vacancies", **kwargs)["items"]
+        response = self._method("vacancies", **kwargs)
+        return [VacancyDTO.model_validate(v) for v in response["items"]]
 
     def search_vacancies_over_pages(
         self, *, page_limit: int = 21, **kwargs: Any
-    ) -> Generator[Any, Any, None]:
+    ) -> Generator[VacancyDTO, Any, None]:
         if self.auth_provider.access_type.value <= AuthAccessType.abstract.value:
             raise Exception("Access type should be non-abstract!")
 
@@ -47,7 +49,7 @@ class BackendApiProvider(AbstractBackendProvider):
 
         while True:
             response = self._method("vacancies", page=page, per_page=per_page, **kwargs)
-            items = response["items"]
+            items = [VacancyDTO.model_validate(v) for v in response["items"]]
             pages = response["pages"]
             page += 1
 
