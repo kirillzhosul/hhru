@@ -11,7 +11,7 @@ class _EnumeratedFieldDTO(BaseModel):
 class VacancyDTO(BaseModel):
     class _SalaryDTO(BaseModel):
         from_: float | None = Field(alias="from", default=None)
-        to: float
+        to: float | None
         currency: str
         gross: bool
 
@@ -27,34 +27,36 @@ class VacancyDTO(BaseModel):
         line_id: str
 
     class _AddressDTO(BaseModel):
-        city: str
-        street: str
-        building: str
-        lat: float
-        lng: float
+        city: str | None
+        street: str | None
+        building: str | None
+        lat: float | None
+        lng: float | None
         description: None
-        raw: str
+        raw: str | None
         id: int
         metro: Optional["VacancyDTO._MetroDTO"]
         metro_stations: list["VacancyDTO._MetroDTO"]
 
-    class _EmployerDTO(_EnumeratedFieldDTO):
-        url: str
-        alternate_url: str
-        logo_urls: dict[str, str]
+    class _EmployerDTO(BaseModel):
+        id: int = Field(default=None)
+        name: str
+        url: str | None = Field(default=None)
+        alternate_url: str | None = Field(default=None)
+        logo_urls: dict[str, str] | None = Field(default=None)
 
-        vacancies_url: str
-        accredited_it_employer: bool
+        vacancies_url: str | None = Field(default=None)
+        accredited_it_employer: bool | None = Field(default=None)
         trusted: bool
 
     class _SnippetDTO(BaseModel):
-        requirement: str
+        requirement: str | None
         responsibility: str | None
 
     id: int
     premium: bool
     name: str
-    department: None
+    department: dict[Any, Any] | None
     has_test: bool
     response_letter_required: bool
 
@@ -64,8 +66,8 @@ class VacancyDTO(BaseModel):
     created_at: str  # TODO: parse date
     archived: bool
     apply_alternate_url: str
-    show_logo_in_search: bool | None
-    insider_interview: None
+    show_logo_in_search: bool | None = Field(default=None)
+    insider_interview: dict[Any, Any] | None
     url: str
     alternate_url: str
     is_adv_vacancy: bool
