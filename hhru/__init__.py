@@ -25,8 +25,6 @@ from hhru.auth import (
 from hhru.backend import AbstractBackendProvider, BackendApiProvider, BackendWebProvider
 from hhru.client import Client
 
-from . import __main__
-
 __all__ = [
     "AbstractBackendProvider",
     "BackendApiProvider",
@@ -37,5 +35,4 @@ __all__ = [
     "BackendWebProvider",
     "Client",
     "consts",
-    "__main__",
 ]
