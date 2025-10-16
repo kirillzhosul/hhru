@@ -1,4 +1,5 @@
-from typing import Any, Generator, List, Protocol
+from collections.abc import Generator
+from typing import Any, Protocol
 
 from hhru.dto import VacancyDTO
 
@@ -8,7 +9,7 @@ class BackendProtocol(Protocol):
     Interface of backend methods
     """
 
-    def search_vacancies(self, **kwargs: Any) -> List[Any]:
+    def search_vacancies(self, **kwargs: Any) -> list[Any]:
         """
         Returns list of search results for vacancies
         """

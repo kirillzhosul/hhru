@@ -1,5 +1,3 @@
-from typing import Optional
-
 import requests
 
 from hhru.auth import AbstractAuthProvider, DirectAuthProvider
@@ -30,7 +28,7 @@ class BackendWebProvider(AbstractBackendProvider):
         self.search_vacancies = api_provider.search_vacancies
         self.search_vacancies_over_pages = api_provider.search_vacancies_over_pages
 
-    def get_xsrf_from_cookies(self) -> Optional[str]:
+    def get_xsrf_from_cookies(self) -> str | None:
         for p in self._web_session.cookies.items():  # type: ignore
             if p[0] == "_xsrf":
                 return p[1]  # type: ignore

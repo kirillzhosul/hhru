@@ -3,8 +3,6 @@ Main client for hh.ru SDK.
 Provides root interface for working with HeadHunter.
 """
 
-from typing import Optional
-
 from hhru.auth import AnonymousAuthProvider
 from hhru.backend import AbstractBackendProvider, BackendApiProvider, BackendProtocol
 
@@ -21,7 +19,7 @@ class Client(BackendProtocol):
     ```
     """
 
-    def __init__(self, backend: Optional[AbstractBackendProvider] = None) -> None:
+    def __init__(self, backend: AbstractBackendProvider | None = None) -> None:
         self.__steal_protocol(backend or BackendApiProvider(AnonymousAuthProvider()))
 
     def __steal_protocol(self, protocol: BackendProtocol) -> None:

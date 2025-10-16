@@ -1,4 +1,4 @@
-from typing import Any, Optional
+from typing import Any
 
 from pydantic import BaseModel, Field
 
@@ -35,7 +35,7 @@ class VacancyDTO(BaseModel):
         description: None
         raw: str | None
         id: int
-        metro: Optional["VacancyDTO._MetroDTO"]
+        metro: "VacancyDTO._MetroDTO | None"
         metro_stations: list["VacancyDTO._MetroDTO"]
 
     class _EmployerDTO(BaseModel):

@@ -1,4 +1,5 @@
-from typing import Any, Generator, List
+from collections.abc import Generator
+from typing import Any
 
 import requests
 
@@ -32,7 +33,7 @@ class BackendApiProvider(AbstractBackendProvider):
 
         return response
 
-    def search_vacancies(self, **kwargs: Any) -> List[VacancyDTO]:
+    def search_vacancies(self, **kwargs: Any) -> list[VacancyDTO]:
         if self.auth_provider.access_type.value <= AuthAccessType.abstract.value:
             raise Exception("Access type should be non-abstract!")
         response = self._method("vacancies", **kwargs)
@@ -40,7 +41,7 @@ class BackendApiProvider(AbstractBackendProvider):
 
     def search_vacancies_over_pages(
         self, *, page_limit: int = 21, **kwargs: Any
-    ) -> Generator[VacancyDTO, Any, None]:
+    ) -> Generator[VacancyDTO]:
         if self.auth_provider.access_type.value <= AuthAccessType.abstract.value:
             raise Exception("Access type should be non-abstract!")
 

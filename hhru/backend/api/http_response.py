@@ -1,4 +1,5 @@
-from typing import Any, Dict
+from collections.abc import Mapping
+from typing import Any
 
 from requests import Response
 
@@ -8,9 +9,11 @@ class BackendApiResponse:
     Backend API response structure (JSON)
     """
 
+    _raw_json: Mapping[str, Any]
+
     def __init__(self, response: Response) -> None:
         self._raw_response = response
-        self._raw_json: Dict[Any, Any] = self._raw_response.json()
+        self._raw_json = self._raw_response.json()
 
     def get(self, key: str, default: Any = None) -> Any:
         """
@@ -31,7 +34,7 @@ class BackendApiResponse:
         field_value = self._raw_json.get(key, None)
         return field_value
 
-    def raw_json(self) -> Dict[Any, Any]:
+    def raw_json(self) -> Mapping[Any, Any]:
         """
         Returns raw JSON from the response.
         WARNING: Do not use this method.
