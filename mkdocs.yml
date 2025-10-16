@@ -1,0 +1,12 @@
+site_name: HeadHunter Python SDK
+site_description: Documentation for HH (hh.ru) job searching website Python SDK/API wrapper 
+
+theme:
+  name: mkdocs
+
+repo_url: https://github.com/kirillzhosul/hhru
+edit_uri: edit/main/docs/
+
+
+watch:
+  - docs
