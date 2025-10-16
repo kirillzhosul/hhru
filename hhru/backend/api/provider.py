@@ -50,7 +50,7 @@ class BackendApiProvider(AbstractBackendProvider):
 
         while True:
             response = self._method("vacancies", page=page, per_page=per_page, **kwargs)
-            items = [VacancyDTO.model_validate(v) for v in response["items"]]
+            items = (VacancyDTO.model_validate(v) for v in response["items"])
             pages = response["pages"]
             page += 1
 
