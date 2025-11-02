@@ -82,6 +82,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#async-support" class="nav-link">Async support</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-bs-level="2"><a href="#helping-constants" class="nav-link">Helping constants</a>
               <ul class="nav flex-column">
               </ul>
@@ -148,6 +152,22 @@ for searching <em>over</em> pages you may used <code>search_vacancies_over_pages
 for vacancy in client.search_vacancies_over_pages():
     if vacancy.text == &quot;...&quot;:
         break
+</code></pre>
+<h2 id="async-support">Async support</h2>
+<p>Async support is available only for HTTP API provider, and not documented/tested as being in process of development, you may view example in <code>examples/async_mean_salary.py</code></p>
+<p>Async requires providing custom Async client:</p>
+<pre><code class="language-python">client = AsyncClient(
+    backend=BackendAsyncApiProvider(
+        auth_provider=AnonymousAuthProvider(),
+        concurrent_max_requests=5,
+    )
+)
+# concurrent_max_requests is an semaphore for not flooding API (also big number throws an unknown error)
+</code></pre>
+<pre><code class="language-python"># For Async call use `search_vacancies_async_burst`
+vacancies: list[VacancyDTO]: await search_vacancies_async_burst()
+# Q: Why it is named burst?
+# A: it performs all API calls in *burst*, by gathering futures and performing them at once, only capped by `concurrent_max_requests` semaphore inside
 </code></pre>
 <h2 id="helping-constants">Helping constants</h2>
 <p>You may import and use <code>hhru.consts</code> for useful constants like:</p>
@@ -239,5 +259,5 @@ client.search_vacancies(order_by=VACANCY_SEARCH_ORDER_DISTANCE)
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-10-16 11:23:21.132875+00:00
+Build Date UTC : 2025-11-02 16:04:41.222064+00:00
 -->
