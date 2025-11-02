@@ -5,7 +5,7 @@ Library specific information.
 __title__ = "hhru"
 __description__ = "HH.ru API library for Python."
 __url__ = "https://github.com/kirillzhosul/hhru"
-__version__ = "0.0.2"
+__version__ = "0.1.3"
 __author__ = "Kirill Zhosul"
 __author_email__ = "kirillzhosul@yandex.com"
 __license__ = "MIT"

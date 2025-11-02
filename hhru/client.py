@@ -5,6 +5,8 @@ Provides root interface for working with HeadHunter.
 
 from hhru.auth import AnonymousAuthProvider
 from hhru.backend import AbstractBackendProvider, BackendApiProvider, BackendProtocol
+from hhru.backend.abstract.abstract import AbstractAsyncBackendProvider
+from hhru.backend.protocol import AsyncBackendProtocol
 
 
 class Client(BackendProtocol):
@@ -25,3 +27,14 @@ class Client(BackendProtocol):
     def __steal_protocol(self, protocol: BackendProtocol) -> None:
         self.search_vacancies = protocol.search_vacancies
         self.search_vacancies_over_pages = protocol.search_vacancies_over_pages
+
+
+class AsyncClient(AsyncBackendProtocol):
+    """WIP client with async support, usage is discouraged."""
+
+    def __init__(self, backend: AbstractAsyncBackendProvider) -> None:
+        self.__steal_protocol(backend)
+
+    def __steal_protocol(self, protocol: AsyncBackendProtocol) -> None:
+        self.search_vacancies = protocol.search_vacancies
+        self.search_vacancies_async_burst = protocol.search_vacancies_async_burst

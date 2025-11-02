@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "hhru"
-version = "0.1.1"
+version = "0.1.3"
 description = "HH.ru wrapper library (jobs searching)"
 license = "MIT"
 readme = "README.md"
 authors = ["Kirill Zhosul <kirillzhosul@yandex.com>"]
 packages = [{ include = "hhru" }]
 keywords = ["hhru", "hh.ru", "hh api", "headhunter", "jobs", "wrapper", "api"]
-urls = { "Documentation" = "https://github.com/kirillzhosul/hhru", "Source" = "https://github.com/kirillzhosul/hhru" }
+urls = { "Documentation" = "https://kirillzhosul.github.io/hhru", "Source" = "https://github.com/kirillzhosul/hhru" }
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Environment :: Web Environment",
@@ -37,6 +37,10 @@ pydantic = "^2.8.2"
 mkdocs = "^1.6.1"
 ruff = "^0.14.0"
 click = "^8.3.0"
+
+
+[tool.poetry.group.async.dependencies]
+aiohttp = "^3.13.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

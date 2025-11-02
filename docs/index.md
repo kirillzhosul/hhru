@@ -62,6 +62,28 @@ for vacancy in client.search_vacancies_over_pages():
 ```
 
 
+## Async support
+
+Async support is available only for HTTP API provider, and not documented/tested as being in process of development, you may view example in `examples/async_mean_salary.py`
+
+Async requires providing custom Async client:
+```python
+client = AsyncClient(
+    backend=BackendAsyncApiProvider(
+        auth_provider=AnonymousAuthProvider(),
+        concurrent_max_requests=5,
+    )
+)
+# concurrent_max_requests is an semaphore for not flooding API (also big number throws an unknown error)
+```
+
+```python
+# For Async call use `search_vacancies_async_burst`
+vacancies: list[VacancyDTO]: await search_vacancies_async_burst()
+# Q: Why it is named burst?
+# A: it performs all API calls in *burst*, by gathering futures and performing them at once, only capped by `concurrent_max_requests` semaphore inside
+```
+
 ## Helping constants
 You may import and use `hhru.consts` for useful constants like:
 ```
